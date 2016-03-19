@@ -11,7 +11,7 @@ class Messanger
     void sendPirState(bool state, char* secret);
    private:
    	char* _host;
-   	void sendMessage(char* message);
+   	void sendMessage(String message);
 
 };
 

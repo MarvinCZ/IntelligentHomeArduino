@@ -6,6 +6,7 @@
 
 ESP8266WiFiMulti WiFiMulti;
 Messanger ms;
+char* secret = "1";
 
 void setup() {
 	Serial.begin(115200);
@@ -21,6 +22,6 @@ void setup() {
 
 void loop() {
 	Serial.println("Request");
-	ms.sendPirState(true, "1");
+	ms.sendPirState(true, secret);
 	delay(5000);
 }
