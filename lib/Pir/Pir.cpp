@@ -5,16 +5,15 @@
 #include "Arduino.h"
 #include "Pir.h"
 
-Pir::Pir(int pin, int initTime){
+Pir::Pir(int pin){
   _pin = pin;
-  _initTime = initTime;
+  _active = false;
   pinMode(_pin, INPUT);
   digitalWrite(_pin, LOW);
-  _initStartTime = millis();
 }
 
 bool Pir::isActive(){
-  return millis() - _initStartTime >= _initTime * 1000;
+  return _active;
 }
 
 bool Pir::getState(){
@@ -23,4 +22,8 @@ bool Pir::getState(){
 
 int Pir::getPin(){
   return _pin;
+}
+
+void Pir::setActive(bool active){
+  _active = active;
 }

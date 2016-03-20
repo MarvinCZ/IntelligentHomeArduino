@@ -8,7 +8,9 @@
 class Messanger
 {
   public:
-    void sendPirState(bool state, char* secret);
+    void sendPirState(int sensorId, bool state, char* secret);
+    void sendGasValue(int sensorId, int value, char* secret);
+    void sendDistance(int sensorId, int distance, char* secret);
    private:
    	char* _host;
    	void sendMessage(String message);

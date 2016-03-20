@@ -28,6 +28,7 @@ Ultrasonic::Ultrasonic(int TP, int EP, long TO)
    Trig_pin=TP;
    Echo_pin=EP;
    Time_out=TO;
+   _active = false;
 }
 
 long Ultrasonic::Timing()
@@ -52,4 +53,13 @@ long Ultrasonic::Ranging(int sys)
   } else {
 	distance_inc = duration / 74 / 2;
 	return distance_inc; }
+}
+
+bool Ultrasonic::isActive()
+{
+  return _active; 
+}
+void Ultrasonic::setActive(bool active)
+{
+  _active = active; 
 }

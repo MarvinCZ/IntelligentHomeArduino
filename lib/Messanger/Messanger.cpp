@@ -5,8 +5,16 @@
 #include <ESP8266WiFi.h>
 #include <Messanger.h>
 
-void Messanger::sendPirState(bool state, char* secret){
-	this->sendMessage(String("GET /entry/put_moving?secret=1&kind=movement&value=") + state);
+void Messanger::sendPirState(int sensorId, bool state, char* secret){
+	this->sendMessage(String("GET /entry/put_pir_state?secret=" + String(secret) + "&sensor_id=" + String(sensorId) + "&value=") + state);
+}
+
+void Messanger::sendGasValue(int sensorId, int value, char* secret){
+	this->sendMessage(String("GET /entry/put_gas_value?secret=" + String(secret) + "&sensor_id=" + String(sensorId) + "&value=") + value);
+}
+
+void Messanger::sendDistance(int sensorId, int distance, char* secret){
+	this->sendMessage(String("GET /entry/put_distance?secret=" + String(secret) + "&sensor_id=" + String(sensorId) + "&value=") + distance);
 }
 
 void Messanger::sendMessage(String message){

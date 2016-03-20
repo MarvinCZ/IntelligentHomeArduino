@@ -8,14 +8,14 @@
 class Pir
 {
   public:
-    Pir(int pin, int initTime);
+    Pir(int pin);
     bool isActive();
     bool getState();
     int getPin();
+    void setActive(bool active);
   private:
     int _pin;
-    int _initTime;
-    int _initStartTime;
+    bool _active;
 };
 
 #endif

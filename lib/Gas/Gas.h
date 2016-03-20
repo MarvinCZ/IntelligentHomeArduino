@@ -8,14 +8,14 @@
 class Gas
 {
   public:
-    Gas(int pin, int limit);
-    bool exceeds();
-    int getState();
+    Gas(int pin);
+    int getValue();
     int getPin();
-    int getLimit();
+    bool isActive();
+    void setActive(bool active);
   private:
     int _pin;
-    int _limit;
+    int _active;
 };
 
 #endif

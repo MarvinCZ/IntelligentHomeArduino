@@ -5,16 +5,12 @@
 #include "Arduino.h"
 #include "Gas.h"
 
-Gas::Gas(int pin, int limit){
+Gas::Gas(int pin){
   _pin = pin;
-  _limit = limit;
+  _active = false;
 }
 
-bool Gas::exceeds(){
-  return analogRead(_pin) > _limit;
-}
-
-int Gas::getState(){
+int Gas::getValue(){
   return analogRead(_pin);
 }
 
@@ -22,6 +18,10 @@ int Gas::getPin(){
   return _pin;
 }
 
-int Gas::getLimit(){
-  return _limit;
+bool Gas::isActive(){
+  return _active;
+}
+
+void Gas::setActive(bool active){
+  _active = active;
 }
