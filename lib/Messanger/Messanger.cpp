@@ -5,16 +5,16 @@
 #include <ESP8266WiFi.h>
 #include <Messanger.h>
 
-void Messanger::sendPirState(int sensorId, bool state, char* secret){
-	this->sendMessage(String("GET /entry/put_pir_state?secret=" + String(secret) + "&sensor_id=" + String(sensorId) + "&value=") + state);
+void Messanger::sendPirState(int id, bool state, int secret){
+	this->sendMessage(String("GET /entry/put_moving?secret=" + String(secret) + "&id=" + String(id) + "&value=") + String(state));
 }
 
-void Messanger::sendGasValue(int sensorId, int value, char* secret){
-	this->sendMessage(String("GET /entry/put_gas_value?secret=" + String(secret) + "&sensor_id=" + String(sensorId) + "&value=") + value);
+void Messanger::sendGasValue(int id, int value, int secret){
+	this->sendMessage(String("GET /entry/put_gas_value?secret=" + String(secret) + "&id=" + String(id) + "&value=") + String(value));
 }
 
-void Messanger::sendDistance(int sensorId, int distance, char* secret){
-	this->sendMessage(String("GET /entry/put_distance?secret=" + String(secret) + "&sensor_id=" + String(sensorId) + "&value=") + distance);
+void Messanger::sendDistance(int id, int distance, int secret){
+	this->sendMessage(String("GET /entry/put_distance?secret=" + String(secret) + "&id=" + String(id) + "&value=") + String(distance));
 }
 
 void Messanger::sendMessage(String message){
